@@ -72,11 +72,11 @@ class ChanWidget(urwid.ListBox):
             label = print_name.replace('_', ' ')
 
             if chan['peer_type'] == 'user':
-                label = "➜  " + label
+                label = "]  " + label
             elif chan['peer_type'] == 'chat':
-                label = "➜➜ " + label
+                label = "> " + label
             elif chan['peer_type'] == 'channel':
-                label = "⤨  " + label
+                label = ">>  " + label
 
             if cmd in self.msg_chan and self.msg_chan[cmd] != 0:
                 label = label + ' [' + str(self.msg_chan[cmd]) + ']'
@@ -97,13 +97,13 @@ class ChanWidget(urwid.ListBox):
 
 
         pos +=1
-        self.chan_list.insert(pos, urwid.AttrMap(urwid.Divider('─'), 'separator'))
+        self.chan_list.insert(pos, urwid.AttrMap(urwid.Divider('-'), 'separator'))
         #pos += 1
-        #self.chan_list.insert(pos, urwid.Text('✚  Create new group chat'))
+        #self.chan_list.insert(pos, urwid.Text('+  Create new group chat'))
         #pos += 1
-        #self.chan_list.insert(pos, urwid.Text('✚  Create new channel'))
+        #self.chan_list.insert(pos, urwid.Text('+  Create new channel'))
         #pos += 1
-        #self.chan_list.insert(pos, urwid.Text('☺  Contacts'))
+        #self.chan_list.insert(pos, urwid.Text('>  Contacts'))
         #pos += 1
         #self.chan_list.insert(pos, urwid.AttrMap(urwid.Divider('─'), 'separator'))
 
@@ -116,7 +116,7 @@ class ChanWidget(urwid.ListBox):
         list_chan.sort()
         if list_buff != list_chan :
             pos += 1
-            button = NewButton('⬇  Download message buffer', self.Telegram_ui.fill_msg_buffer)
+            button = NewButton('<  Download message buffer', self.Telegram_ui.fill_msg_buffer)
             self.chan_list.insert(pos, button)
 
 

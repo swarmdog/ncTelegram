@@ -181,11 +181,11 @@ class MessageWidget(urwid.ListBox):
 
             
 
-        cur_date = time.strftime('│ ' + self.Telegram_ui.DATE_FORMAT + ' │', time.localtime(date))
+        cur_date = time.strftime('| ' + self.Telegram_ui.DATE_FORMAT + ' |', time.localtime(date))
 
         if cur_date != self.prev_date[current_cmd]:
-            fill = '─'*(len(cur_date) - 2)
-            date_text = '┌' + fill + '┐\n' + cur_date + '\n└' + fill + '┘'
+            fill = '='*(len(cur_date) - 2)
+            date_text = '/' + fill + '\\\n' + cur_date + '\n\\' + fill + '/'
             
             date_to_display = urwid.Text(('date', date_text), align='center')
             self.msg_list.insert(self.pos + 1, date_to_display)
@@ -201,7 +201,7 @@ class MessageWidget(urwid.ListBox):
 
         message_meta = urwid.Text([('hour', hour),
                                    (urwid.AttrSpec(color, 'default'), '{0: >9}'.format(sender[0:size_name])),
-                                   ('separator', " │ ")])
+                                   ('separator', " | ")])
 
         message_text = urwid.Text(text)
         message_to_display = urwid.Columns([(size_name +10, message_meta), message_text])
